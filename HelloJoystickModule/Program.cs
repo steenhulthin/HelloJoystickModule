@@ -35,12 +35,16 @@ namespace HelloJoystickModule
             var joystickPosition = joystick.GetPosition();
             // Present the x-position as a LED turned on relative to the position
             led_Strip.TurnAllLedsOff();
-            var positionAsLed = ((joystickPosition.X + 1.0)*3).ToString("F0");
+            var positionAsLed = ((joystickPosition.X + 1.0) * 3.0).ToString("F0");
             Debug.Print(positionAsLed);
             //((joystickPosition.X + 1)*3.5).ToString("G")
             var led = int.Parse(positionAsLed);
             led_Strip.TurnLEDOn(led);
             // Present the y-position as a frequency on the tunes module
+            var frequency = int.Parse( ((joystickPosition.Y + 1.0) * 1000.0).ToString("F0") );
+            var melody = new Tunes.Melody();
+            melody.Add(frequency, 50);
+            tunes.Play(melody);
             // Get the Joystick button state
             // Present the joystick button state as the main board LED on/off
         }
