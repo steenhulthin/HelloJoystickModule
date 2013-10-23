@@ -23,7 +23,19 @@ namespace HelloJoystickModule
             // Use Debug.Print to show messages in Visual Studio's "Output" window during debugging.
             Debug.Print("Program Started");
 
-            
+            var timer = new GT.Timer(10);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+
+        // This will be the main loop.
+        void timer_Tick(GT.Timer timer)
+        {
+            // Get the Joystick position.
+            // Present the x-position as a LED turned on relative to the position
+            // Present the y-position as a frequency on the tunes module
+            // Get the Joystick button state
+            // Present the joystick button state as the main board LED on/off
         }
     }
 }
