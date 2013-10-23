@@ -15,6 +15,18 @@ namespace HelloJoystickModule {
     
     public partial class Program : Gadgeteer.Program {
         
+        /// <summary>The UsbClientSP module using socket 8 of the mainboard.</summary>
+        private Gadgeteer.Modules.GHIElectronics.UsbClientSP usbClientSP;
+        
+        /// <summary>The LED Strip module using socket 7 of the mainboard.</summary>
+        private Gadgeteer.Modules.GHIElectronics.LED_Strip led_Strip;
+        
+        /// <summary>The Joystick module using socket 4 of the mainboard.</summary>
+        private Gadgeteer.Modules.GHIElectronics.Joystick joystick;
+        
+        /// <summary>The Tunes module using socket 6 of the mainboard.</summary>
+        private Gadgeteer.Modules.GHIElectronics.Tunes tunes;
+        
         /// <summary>This property provides access to the Mainboard API. This is normally not necessary for an end user program.</summary>
         protected new static GHIElectronics.Gadgeteer.FEZCerberus Mainboard {
             get {
@@ -37,6 +49,10 @@ namespace HelloJoystickModule {
         }
         
         private void InitializeModules() {
+            this.usbClientSP = new GTM.GHIElectronics.UsbClientSP(8);
+            this.led_Strip = new GTM.GHIElectronics.LED_Strip(7);
+            this.joystick = new GTM.GHIElectronics.Joystick(4);
+            this.tunes = new GTM.GHIElectronics.Tunes(6);
         }
     }
 }
